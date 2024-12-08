@@ -60,3 +60,7 @@ void MainWindow::on_slider_trem_1_valueChanged(int value) {
 void MainWindow::on_slider_trem_2_valueChanged(int value) {
     trem2->setVelocidade(value);
 }
+
+void MainWindow::on_slider_trem_3_valueChanged(int value) {
+    trem3->setVelocidade(value);
+}

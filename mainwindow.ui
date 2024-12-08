@@ -370,6 +370,32 @@
      <string>T3</string>
     </property>
    </widget>
+   <widget class="QSlider" name="slider_trem_3">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>340</y>
+      <width>191</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_slider_trem3">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>340</y>
+      <width>16</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>T3</string>
+    </property>
+   </widget>
    <zorder>label_trilho1</zorder>
    <zorder>label_trilho2</zorder>
    <zorder>label_trilho3</zorder>
@@ -393,6 +419,8 @@
    <zorder>label_trilho4_6</zorder>
    <zorder>label_trilho2_0</zorder>
    <zorder>label_trem3</zorder>
+   <zorder>slider_trem_3</zorder>
+   <zorder>label_slider_trem3</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
