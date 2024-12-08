@@ -3,8 +3,11 @@
 #include <iostream>
 
 QMutex Trem::mutexIntersecao0;
-bool Trem::intersecaoOcupadaPeloT1 = false;
-bool Trem::intersecaoOcupadaPeloT2 = false;
+QMutex Trem::mutexIntersecao4;
+bool Trem::intersecao0ocupadaPeloT1 = false;
+bool Trem::intersecao0ocupadaPeloT2 = false;
+bool Trem::intersecao4ocupadaPeloT3 = false;
+bool Trem::intersecao4ocupadaPeloT2 = false;
 
 //Construtor
 Trem::Trem(int ID, int x, int y){
@@ -23,13 +26,13 @@ void Trem::run(){
     while(true){
         switch(ID){
         case 1:     //Trem 1
-            if (intersecaoOcupadaPeloT2 && x >= 330 && x <= 340 && y < 150) {
+            if (intersecao0ocupadaPeloT2 && x >= 330 && x <= 340 && y < 150) {
                 mutexIntersecao0.lock();
             }
 
             if (y < 150 && x >= 350 && x < 360) {
-                if (!intersecaoOcupadaPeloT2) {
-                    intersecaoOcupadaPeloT1 = true;
+                if (!intersecao0ocupadaPeloT2) {
+                    intersecao0ocupadaPeloT1 = true;
                 }
             }
 
@@ -40,7 +43,7 @@ void Trem::run(){
                 y+=10;
             }
             else if (x > 90 && y == 150) {
-                intersecaoOcupadaPeloT1 = false;
+                intersecao0ocupadaPeloT1 = false;
                 mutexIntersecao0.unlock();
                 x-=10;
             }
@@ -49,19 +52,32 @@ void Trem::run(){
             }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
+
         case 2: //Trem 2
-            if (intersecaoOcupadaPeloT1 && x <= 390 && y == 150) {
+            if (intersecao0ocupadaPeloT1 && x <= 390 && y == 150) {
                 mutexIntersecao0.lock();
+            } else if (intersecao4ocupadaPeloT3 && x == 630 && y <= 130 && y >= 110) {
+                mutexIntersecao4.lock();
             }
+
             if (x >= 360 && x <= 370 && y > 30) {
-                if (!intersecaoOcupadaPeloT1) {
-                    intersecaoOcupadaPeloT2 = true;
+                if (!intersecao0ocupadaPeloT1) {
+                    intersecao0ocupadaPeloT2 = true;
                 }
+            } else if (y >= 130 && y <= 150 && x >= 500) {
+                if (!intersecao4ocupadaPeloT3) {
+                    intersecao4ocupadaPeloT2 = true;
+                }
+            }
+
+            if (y == 150 && x < 500) {
+                mutexIntersecao4.unlock();
+                intersecao4ocupadaPeloT2 = false;
             }
 
 
             if (y == 30 && x <630) {
-                intersecaoOcupadaPeloT2 = false;
+                intersecao0ocupadaPeloT2 = false;
                 mutexIntersecao0.unlock();
                 x+=10;
             }
@@ -78,6 +94,22 @@ void Trem::run(){
             break;
 
         case 3: //Trem 3
+            if (intersecao4ocupadaPeloT2 && x < 520 && y >= 170 && y < 190) {
+                mutexIntersecao4.lock();
+            }
+
+            else if (x >= 500 && x <= 650 && y == 150) {
+                if (!intersecao4ocupadaPeloT2) {
+                    intersecao4ocupadaPeloT3 = true;
+                }
+            }
+
+            if (x >= 650 && y == 150) {
+                intersecao4ocupadaPeloT3 = false;
+                mutexIntersecao4.unlock();
+            }
+
+
             if (y < 270 && x == 720) {
                 y+=10;
             }

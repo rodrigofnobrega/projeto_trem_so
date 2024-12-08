@@ -50,6 +50,7 @@ public:
     QLabel *label_trem3;
     QSlider *slider_trem_3;
     QLabel *label_slider_trem3;
+    QLabel *label_trem3_2;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -158,6 +159,10 @@ public:
         label_slider_trem3 = new QLabel(centralWidget);
         label_slider_trem3->setObjectName(QString::fromUtf8("label_slider_trem3"));
         label_slider_trem3->setGeometry(QRect(530, 340, 16, 16));
+        label_trem3_2 = new QLabel(centralWidget);
+        label_trem3_2->setObjectName(QString::fromUtf8("label_trem3_2"));
+        label_trem3_2->setGeometry(QRect(500, 190, 20, 21));
+        label_trem3_2->setStyleSheet(QString::fromUtf8("QLabel { background: red}"));
         MainWindow->setCentralWidget(centralWidget);
         label_trilho1->raise();
         label_trilho2->raise();
@@ -184,6 +189,7 @@ public:
         label_trem3->raise();
         slider_trem_3->raise();
         label_slider_trem3->raise();
+        label_trem3_2->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
         menuBar->setGeometry(QRect(0, 0, 805, 19));
@@ -225,6 +231,7 @@ public:
         label_trilho2_0->setText(QString());
         label_trem3->setText(QCoreApplication::translate("MainWindow", "T3", nullptr));
         label_slider_trem3->setText(QCoreApplication::translate("MainWindow", "T3", nullptr));
+        label_trem3_2->setText(QCoreApplication::translate("MainWindow", "T3", nullptr));
     } // retranslateUi
 
 };

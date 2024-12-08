@@ -396,6 +396,22 @@
      <string>T3</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_trem3_2">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>190</y>
+      <width>20</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel { background: red}</string>
+    </property>
+    <property name="text">
+     <string>T3</string>
+    </property>
+   </widget>
    <zorder>label_trilho1</zorder>
    <zorder>label_trilho2</zorder>
    <zorder>label_trilho3</zorder>
@@ -421,6 +437,7 @@
    <zorder>label_trem3</zorder>
    <zorder>slider_trem_3</zorder>
    <zorder>label_slider_trem3</zorder>
+   <zorder>label_trem3_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
