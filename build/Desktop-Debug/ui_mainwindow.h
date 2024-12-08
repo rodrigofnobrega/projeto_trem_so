@@ -212,7 +212,7 @@ public:
         label_trilho4_5->setText(QString());
         label_trilho4_6->setText(QString());
         label_trilho2_0->setText(QString());
-        label_trem3->setText(QCoreApplication::translate("MainWindow", "T2", nullptr));
+        label_trem3->setText(QCoreApplication::translate("MainWindow", "T3", nullptr));
     } // retranslateUi
 
 };

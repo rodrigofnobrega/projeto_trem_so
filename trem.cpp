@@ -76,6 +76,22 @@ void Trem::run(){
             }
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
+
+        case 3: //Trem 3
+            if (y < 270 && x == 720) {
+                y+=10;
+            }
+            else if (x > 500 && y == 270) {
+                x-=10;
+            }
+            else if (x == 500 && y <= 270 && y > 150) {
+                y-=10;
+            }
+            else {
+                x+=10;
+            }
+            emit updateGUI(ID, x,y);    //Emite um sinal
+            break;
         default:
             break;
         }

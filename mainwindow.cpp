@@ -9,8 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     //Cria o trem com seu (ID, posição X, posição Y)
-    trem1 = new Trem(1,60,30);
-    trem2 = new Trem(2,330,30);
+    trem1 = new Trem(1,90,30);
+    trem2 = new Trem(2,360,30);
+    trem3 = new Trem(3,720,150);
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -21,10 +22,11 @@ MainWindow::MainWindow(QWidget *parent) :
      */
     connect(trem1,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     connect(trem2,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
+    connect(trem3,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
 
     trem1->start();
     trem2->start();
-
+    trem3->start();
 }
 
 //Função que será executada quando o sinal UPDATEGUI for emitido
@@ -35,6 +37,9 @@ void MainWindow::updateInterface(int id, int x, int y){
         break;
     case 2: //Atualiza a posição do objeto da tela (quadrado) que representa o trem2
         ui->label_trem2->setGeometry(x,y,21,17);
+        break;
+    case 3: //Atualiza a posição do objeto da tela (quadrado) que representa o trem3
+        ui->label_trem3->setGeometry(x,y,21,17);
         break;
     default:
         break;

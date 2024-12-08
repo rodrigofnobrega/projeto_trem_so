@@ -367,7 +367,7 @@
      <string notr="true">QLabel { background: red}</string>
     </property>
     <property name="text">
-     <string>T2</string>
+     <string>T3</string>
     </property>
    </widget>
    <zorder>label_trilho1</zorder>
