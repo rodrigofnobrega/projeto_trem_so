@@ -11,14 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // Configurar o range dos sliders
     ui->slider_trem_1->setRange(0, 200);
-    // ui->slider_trem_1->setValue(200);
-
     ui->slider_trem_2->setRange(0, 200);
-    // ui->slider_trem_2->setValue(200);
-
     ui->slider_trem_3->setRange(0, 200);
-    // ui->slider_trem_3->setValue(200);
-
 
     //Cria o trem com seu (ID, posição X, posição Y)
     trem1 = new Trem(1,90,30);
