@@ -8,10 +8,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-
-
-
     //Cria o trem com seu (ID, posição X, posição Y)
     trem1 = new Trem(1,60,30);
     trem2 = new Trem(2,330,30);
@@ -69,25 +65,10 @@ void MainWindow::on_pushButton_2_clicked()
 
 /* Mudar velocidade dos trens arrastando o slider
 */
-void MainWindow::on_slider_trem_1_sliderMoved(int position)
-{
-    // trem1->setVelocidade(position);
-}
-void MainWindow::on_slider_trem_2_sliderMoved(int position)
-{
-    // trem2->setVelocidade(position);
-}
-
-
-void MainWindow::on_slider_trem_1_sliderReleased()
-{
-    std::cout << "Slider iniciou" << std::endl;
-
-}
-
 void MainWindow::on_slider_trem_1_valueChanged(int value) {
-    std::cout << "Valor do slide: " << value << std::endl;
-
     trem1->setVelocidade(value);
+}
 
+void MainWindow::on_slider_trem_2_valueChanged(int value) {
+    trem2->setVelocidade(value);
 }

@@ -184,44 +184,13 @@
      <string>T2</string>
     </property>
    </widget>
-   <widget class="QSlider" name="slider_trem_1">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>285</y>
-      <width>201</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>201</width>
-      <height>21</height>
-     </size>
-    </property>
-    <property name="mouseTracking">
-     <bool>true</bool>
-    </property>
-    <property name="tabletTracking">
-     <bool>true</bool>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
-    </property>
-    <property name="autoFillBackground">
-     <bool>true</bool>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
    <widget class="QSlider" name="slider_trem_2">
     <property name="geometry">
      <rect>
       <x>30</x>
       <y>320</y>
-      <width>201</width>
-      <height>21</height>
+      <width>191</width>
+      <height>16</height>
      </rect>
     </property>
     <property name="orientation">
@@ -254,6 +223,19 @@
      <string>T2</string>
     </property>
    </widget>
+   <widget class="QSlider" name="slider_trem_1">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>290</y>
+      <width>191</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
    <zorder>label_trilho1</zorder>
    <zorder>label_trilho2</zorder>
    <zorder>label_trilho3</zorder>
@@ -265,10 +247,10 @@
    <zorder>label_trilho1_2</zorder>
    <zorder>label_trilho2_2</zorder>
    <zorder>label_trem2</zorder>
-   <zorder>slider_trem_1</zorder>
    <zorder>slider_trem_2</zorder>
    <zorder>label_slider_trem1</zorder>
    <zorder>label_selider_trem2</zorder>
+   <zorder>slider_trem_1</zorder>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
