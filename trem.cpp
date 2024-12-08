@@ -27,10 +27,13 @@ void Trem::run(){
                 mutexIntersecao0.lock();
             }
 
-            if (y == 30 && x <330) {
+            if (y < 150 && x >= 320 && x < 330) {
                 if (!intersecaoOcupadaPeloT2) {
                     intersecaoOcupadaPeloT1 = true;
                 }
+            }
+
+            if (y == 30 && x < 330) {
                 x+=10;
             }
             else if (x == 330 && y < 150) {
@@ -50,7 +53,7 @@ void Trem::run(){
             if (intersecaoOcupadaPeloT1 && x <= 360 && y == 150) {
                 mutexIntersecao0.lock();
             }
-            if (x == 350 && y == 150) {
+            if (x >= 330 && x <= 340 && y > 30) {
                 if (!intersecaoOcupadaPeloT1) {
                     intersecaoOcupadaPeloT2 = true;
                 }
