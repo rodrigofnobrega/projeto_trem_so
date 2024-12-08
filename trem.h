@@ -20,8 +20,9 @@ private:
     int ID; // ID do trem
     int velocidade; // Velocidade
 
-    static QMutex mutexIntersecao; // Mutex para sincronizar acesso à interseção
-    static bool intersecaoOcupada; // Indica se a área de interseção está ocupada
+    static QMutex mutexIntersecao0; // Mutex para sincronizar acesso à interseção
+    static bool intersecaoOcupadaPeloT1; // Indica se a área de interseção está ocupada
+    static bool intersecaoOcupadaPeloT2; // Indica se a área de interseção está ocupada
 };
 
 #endif // TREM_H
