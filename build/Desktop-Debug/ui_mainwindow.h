@@ -15,6 +15,7 @@
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSlider>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
@@ -36,6 +37,10 @@ public:
     QLabel *label_trilho1_2;
     QLabel *label_trilho2_2;
     QLabel *label_trem2;
+    QSlider *slider_trem_1;
+    QSlider *slider_trem_2;
+    QLabel *label_slider_trem1;
+    QLabel *label_selider_trem2;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -44,7 +49,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(641, 300);
+        MainWindow->resize(805, 494);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
         label_trem1 = new QLabel(centralWidget);
@@ -69,7 +74,7 @@ public:
         label_trilho4->setStyleSheet(QString::fromUtf8("QLabel { background: yellow}"));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setGeometry(QRect(230, 180, 99, 27));
+        pushButton->setGeometry(QRect(240, 180, 99, 27));
         pushButton_2 = new QPushButton(centralWidget);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         pushButton_2->setGeometry(QRect(350, 180, 98, 27));
@@ -89,6 +94,25 @@ public:
         label_trem2->setObjectName(QString::fromUtf8("label_trem2"));
         label_trem2->setGeometry(QRect(330, 30, 21, 17));
         label_trem2->setStyleSheet(QString::fromUtf8("QLabel { background: red}"));
+        slider_trem_1 = new QSlider(centralWidget);
+        slider_trem_1->setObjectName(QString::fromUtf8("slider_trem_1"));
+        slider_trem_1->setGeometry(QRect(30, 285, 201, 21));
+        slider_trem_1->setMinimumSize(QSize(201, 21));
+        slider_trem_1->setMouseTracking(true);
+        slider_trem_1->setTabletTracking(true);
+        slider_trem_1->setLayoutDirection(Qt::RightToLeft);
+        slider_trem_1->setAutoFillBackground(true);
+        slider_trem_1->setOrientation(Qt::Horizontal);
+        slider_trem_2 = new QSlider(centralWidget);
+        slider_trem_2->setObjectName(QString::fromUtf8("slider_trem_2"));
+        slider_trem_2->setGeometry(QRect(30, 320, 201, 21));
+        slider_trem_2->setOrientation(Qt::Horizontal);
+        label_slider_trem1 = new QLabel(centralWidget);
+        label_slider_trem1->setObjectName(QString::fromUtf8("label_slider_trem1"));
+        label_slider_trem1->setGeometry(QRect(250, 290, 16, 16));
+        label_selider_trem2 = new QLabel(centralWidget);
+        label_selider_trem2->setObjectName(QString::fromUtf8("label_selider_trem2"));
+        label_selider_trem2->setGeometry(QRect(250, 320, 16, 16));
         MainWindow->setCentralWidget(centralWidget);
         label_trilho1->raise();
         label_trilho2->raise();
@@ -101,9 +125,13 @@ public:
         label_trilho1_2->raise();
         label_trilho2_2->raise();
         label_trem2->raise();
+        slider_trem_1->raise();
+        slider_trem_2->raise();
+        label_slider_trem1->raise();
+        label_selider_trem2->raise();
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QString::fromUtf8("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 641, 22));
+        menuBar->setGeometry(QRect(0, 0, 805, 19));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
@@ -131,6 +159,8 @@ public:
         label_trilho1_2->setText(QString());
         label_trilho2_2->setText(QString());
         label_trem2->setText(QCoreApplication::translate("MainWindow", "T2", nullptr));
+        label_slider_trem1->setText(QCoreApplication::translate("MainWindow", "T1", nullptr));
+        label_selider_trem2->setText(QCoreApplication::translate("MainWindow", "T2", nullptr));
     } // retranslateUi
 
 };
