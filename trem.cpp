@@ -23,23 +23,23 @@ void Trem::run(){
     while(true){
         switch(ID){
         case 1:     //Trem 1
-            if (intersecaoOcupadaPeloT2 && x >= 300 && x <= 310 && y < 150) {
+            if (intersecaoOcupadaPeloT2 && x >= 330 && x <= 340 && y < 150) {
                 mutexIntersecao0.lock();
             }
 
-            if (y < 150 && x >= 320 && x < 330) {
+            if (y < 150 && x >= 350 && x < 360) {
                 if (!intersecaoOcupadaPeloT2) {
                     intersecaoOcupadaPeloT1 = true;
                 }
             }
 
-            if (y == 30 && x < 330) {
+            if (y == 30 && x < 360) {
                 x+=10;
             }
-            else if (x == 330 && y < 150) {
+            else if (x == 360 && y < 150) {
                 y+=10;
             }
-            else if (x > 60 && y == 150) {
+            else if (x > 90 && y == 150) {
                 intersecaoOcupadaPeloT1 = false;
                 mutexIntersecao0.unlock();
                 x-=10;
@@ -50,25 +50,25 @@ void Trem::run(){
             emit updateGUI(ID, x,y);    //Emite um sinal
             break;
         case 2: //Trem 2
-            if (intersecaoOcupadaPeloT1 && x <= 360 && y == 150) {
+            if (intersecaoOcupadaPeloT1 && x <= 390 && y == 150) {
                 mutexIntersecao0.lock();
             }
-            if (x >= 330 && x <= 340 && y > 30) {
+            if (x >= 360 && x <= 370 && y > 30) {
                 if (!intersecaoOcupadaPeloT1) {
                     intersecaoOcupadaPeloT2 = true;
                 }
             }
 
 
-            if (y == 30 && x <600) {
+            if (y == 30 && x <630) {
                 intersecaoOcupadaPeloT2 = false;
                 mutexIntersecao0.unlock();
                 x+=10;
             }
-            else if (x == 600 && y < 150) {
+            else if (x == 630 && y < 150) {
                 y+=10;
             }
-            else if (x > 330 && y == 150) {
+            else if (x > 360 && y == 150) {
                 x-=10;
             }
             else {
