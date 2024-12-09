@@ -4,10 +4,13 @@
 
 QMutex Trem::mutexIntersecao0;
 QMutex Trem::mutexIntersecao4;
+QMutex Trem::mutexIntersecao6;
 bool Trem::intersecao0ocupadaPeloT1 = false;
 bool Trem::intersecao0ocupadaPeloT2 = false;
 bool Trem::intersecao4ocupadaPeloT3 = false;
 bool Trem::intersecao4ocupadaPeloT2 = false;
+bool Trem::intersecao6ocupadaPeloT4 = false;
+bool Trem::intersecao6ocupadaPeloT3 = false;
 
 //Construtor
 Trem::Trem(int ID, int x, int y){
@@ -96,17 +99,26 @@ void Trem::run(){
         case 3: //Trem 3
             if (intersecao4ocupadaPeloT2 && x < 520 && y >= 170 && y < 190) {
                 mutexIntersecao4.lock();
+            } else if (intersecao6ocupadaPeloT4 && x >= 520 && x <= 540 && y == 270) {
+                mutexIntersecao6.lock();
             }
 
             else if (x >= 500 && x <= 650 && y == 150) {
                 if (!intersecao4ocupadaPeloT2) {
                     intersecao4ocupadaPeloT3 = true;
                 }
+            } else if (x >= 500 && x <= 510 && y == 270) {
+                if (!intersecao6ocupadaPeloT4) {
+                    intersecao6ocupadaPeloT3 = true;
+                }
             }
 
             if (x >= 650 && y == 150) {
                 intersecao4ocupadaPeloT3 = false;
                 mutexIntersecao4.unlock();
+            } else if (x >= 520 && y == 150) {
+                mutexIntersecao6.unlock();
+                intersecao6ocupadaPeloT3 = false;
             }
 
 
@@ -126,6 +138,21 @@ void Trem::run(){
             break;
 
         case 4: //Trem 4
+            if (intersecao6ocupadaPeloT3 && x <= 480 && x >= 460 && y == 150) {
+                mutexIntersecao6.lock();
+            }
+
+            if (x <= 500 && x >= 470 && y == 150) {
+                if (!intersecao6ocupadaPeloT3) {
+                    intersecao6ocupadaPeloT4 =  true;
+                }
+            }
+
+            if (x <= 480 && y == 270) {
+                mutexIntersecao6.unlock();
+                intersecao6ocupadaPeloT4 = false;
+            }
+
             if (x >= 250 && x < 500 && y == 150) {
                 x+=10;
             }
