@@ -27,6 +27,8 @@ private slots:
 
     void on_slider_trem_3_valueChanged(int value);
 
+    void on_slider_trem_4_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 
@@ -34,6 +36,7 @@ private:
     Trem *trem1;
     Trem *trem2;
     Trem *trem3;
+    Trem *trem4;
 };
 
 #endif // MAINWINDOW_H
