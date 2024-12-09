@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <iostream>
-#include <QSlider>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,17 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    // Configurar o range dos sliders
-    ui->slider_trem_1->setRange(0, 200);
-    ui->slider_trem_2->setRange(0, 200);
-    ui->slider_trem_3->setRange(0, 200);
-    ui->slider_trem_4->setRange(0, 200);
-
     //Cria o trem com seu (ID, posição X, posição Y)
-    trem1 = new Trem(1,90,30);
-    trem2 = new Trem(2,360,30);
-    trem3 = new Trem(3,720,150);
-    trem4 = new Trem(4,250,150);
+    trem1 = new Trem(1,330,20);
+    trem2 = new Trem(2,730,80);
+    trem3 = new Trem(3,330,210);
+    trem4 = new Trem(4,460,270);
+    trem5 = new Trem(5,870,210);
 
     /*
      * Conecta o sinal UPDATEGUI à função UPDATEINTERFACE.
@@ -32,14 +25,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(trem2,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     connect(trem3,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
     connect(trem4,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
+    connect(trem5,SIGNAL(updateGUI(int,int,int)),SLOT(updateInterface(int,int,int)));
 
     trem1->start();
     trem2->start();
     trem3->start();
     trem4->start();
+    trem5->start();
+
 }
 
-//Função que será executada quando o sinal UPDATEGUI for emitido
 void MainWindow::updateInterface(int id, int x, int y){
     switch(id){
     case 1: //Atualiza a posição do objeto da tela (quadrado) que representa o trem1
@@ -54,31 +49,44 @@ void MainWindow::updateInterface(int id, int x, int y){
     case 4: //Atualiza a posição do objeto da tela (quadrado) que representa o trem3
         ui->label_trem4->setGeometry(x,y,21,17);
         break;
+    case 5: //Atualiza a posição do objeto da tela (quadrado) que representa o trem3
+        ui->label_trem5->setGeometry(x,y,21,17);
+        break;
     default:
         break;
     }
+}
+
+QString MainWindow::atualizarTexto(int value){
+    return QString::number(200-value);
+}
+
+void MainWindow::on_horizontalSlider_1_valueChanged(int value){
+    trem1->setVelocidade(value);
+    ui->vT1->setText(atualizarTexto(value));
+}
+
+void MainWindow::on_horizontalSlider_2_valueChanged(int value){
+    trem2->setVelocidade(value);
+    ui->vT2->setText(atualizarTexto(value));
+}
+
+void MainWindow::on_horizontalSlider_3_valueChanged(int value){
+    trem3->setVelocidade(value);
+    ui->vT3->setText(atualizarTexto(value));
+}
+
+void MainWindow::on_horizontalSlider_4_valueChanged(int value){
+    trem4->setVelocidade(value);
+    ui->vT4->setText(atualizarTexto(value));
+}
+
+void MainWindow::on_horizontalSlider_5_valueChanged(int value){
+    trem5->setVelocidade(value);
+    ui->vT5->setText(atualizarTexto(value));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
-/* Mudar velocidade dos trens arrastando o slider
-*/
-void MainWindow::on_slider_trem_1_valueChanged(int value) {
-    trem1->setVelocidade(value);
-}
-
-void MainWindow::on_slider_trem_2_valueChanged(int value) {
-    trem2->setVelocidade(value);
-}
-
-void MainWindow::on_slider_trem_3_valueChanged(int value) {
-    trem3->setVelocidade(value);
-}
-
-void MainWindow::on_slider_trem_4_valueChanged(int value) {
-    trem4->setVelocidade(value);
-}
-

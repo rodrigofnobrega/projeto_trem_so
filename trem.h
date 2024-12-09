@@ -2,36 +2,31 @@
 #define TREM_H
 
 #include <QThread>
-#include <QMutex>
 
-class Trem : public QThread {
+/*
+ * Classe Trem herda QThread
+ * Classe Trem passa a ser uma thread.
+ * A função START inicializa a thread. Após inicializada, a thread irá executar a função RUN.
+ * Para parar a execução da função RUN da thread, basta executar a função TERMINATE.
+ *
+*/
+class Trem: public QThread{
     Q_OBJECT
 public:
-    Trem(int, int, int); // Construtor
-    void setVelocidade(int velocidade);
-    void run(); // Função executada pela thread
+    Trem(int,int,int);  //construtor
+    void run();         //função a ser executada pela thread
+    void setVelocidade(int); //atualiza a velocidade do trem
 
+
+    //Cria um sinal
 signals:
-    void updateGUI(int, int, int);
+    void updateGUI(int,int,int);
 
 private:
-    int x; // Posição X do trem na tela
-    int y; // Posição Y do trem na tela
-    int ID; // ID do trem
-    int velocidade; // Velocidade
-
-    static QMutex mutexIntersecao0; // Mutex para sincronizar acesso à interseção
-    static QMutex mutexIntersecao4; // Mutex para sincronizar acesso à interseção
-    static QMutex mutexIntersecao6; // Mutex para sincronizar acesso à interseção
-    static QMutex mutexIntersecao3; // Mutex para sincronizar acesso à interseção
-    static bool intersecao0ocupadaPeloT1; // Indica se a área de interseção está ocupada
-    static bool intersecao0ocupadaPeloT2; // Indica se a área de interseção está ocupada
-    static bool intersecao4ocupadaPeloT2; // Indica se a área de interseção está ocupada
-    static bool intersecao4ocupadaPeloT3; // Indica se a área de interseção está ocupada
-    static bool intersecao6ocupadaPeloT4; // Indica se a área de interseção está ocupada
-    static bool intersecao6ocupadaPeloT3; // Indica se a área de interseção está ocupada
-    static bool intersecao3ocupadaPeloT2; // Indica se a área de interseção está ocupada
-    static bool intersecao3ocupadaPeloT4; // Indica se a área de interseção está ocupada
+    int x;           //posição X do trem na tela
+    int y;           //posição Y do trem na tela
+    int ID;          //ID do trem
+    int velocidade;  //Velocidade. É o tempo de dormir em milisegundos entre a mudança de posição do trem
 };
 
 #endif // TREM_H

@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../trem.h"
+#include "../../../teste/projeto_trem/trem.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Trem_t {
-    QByteArrayData data[3];
-    char stringdata0[16];
+    QByteArrayData data[6];
+    char stringdata0[23];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,10 +34,13 @@ static const qt_meta_stringdata_Trem_t qt_meta_stringdata_Trem = {
     {
 QT_MOC_LITERAL(0, 0, 4), // "Trem"
 QT_MOC_LITERAL(1, 5, 9), // "updateGUI"
-QT_MOC_LITERAL(2, 15, 0) // ""
+QT_MOC_LITERAL(2, 15, 0), // ""
+QT_MOC_LITERAL(3, 16, 2), // "id"
+QT_MOC_LITERAL(4, 19, 1), // "x"
+QT_MOC_LITERAL(5, 21, 1) // "y"
 
     },
-    "Trem\0updateGUI\0"
+    "Trem\0updateGUI\0\0id\0x\0y"
 };
 #undef QT_MOC_LITERAL
 
@@ -58,7 +61,7 @@ static const uint qt_meta_data_Trem[] = {
        1,    3,   19,    2, 0x06 /* Public */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,    2,    2,    2,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::Int,    3,    4,    5,
 
        0        // eod
 };
