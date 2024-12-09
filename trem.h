@@ -23,12 +23,15 @@ private:
     static QMutex mutexIntersecao0; // Mutex para sincronizar acesso à interseção
     static QMutex mutexIntersecao4; // Mutex para sincronizar acesso à interseção
     static QMutex mutexIntersecao6; // Mutex para sincronizar acesso à interseção
+    static QMutex mutexIntersecao3; // Mutex para sincronizar acesso à interseção
     static bool intersecao0ocupadaPeloT1; // Indica se a área de interseção está ocupada
     static bool intersecao0ocupadaPeloT2; // Indica se a área de interseção está ocupada
     static bool intersecao4ocupadaPeloT2; // Indica se a área de interseção está ocupada
     static bool intersecao4ocupadaPeloT3; // Indica se a área de interseção está ocupada
     static bool intersecao6ocupadaPeloT4; // Indica se a área de interseção está ocupada
     static bool intersecao6ocupadaPeloT3; // Indica se a área de interseção está ocupada
+    static bool intersecao3ocupadaPeloT2; // Indica se a área de interseção está ocupada
+    static bool intersecao3ocupadaPeloT4; // Indica se a área de interseção está ocupada
 };
 
 #endif // TREM_H

@@ -5,12 +5,15 @@
 QMutex Trem::mutexIntersecao0;
 QMutex Trem::mutexIntersecao4;
 QMutex Trem::mutexIntersecao6;
+QMutex Trem::mutexIntersecao3;
 bool Trem::intersecao0ocupadaPeloT1 = false;
 bool Trem::intersecao0ocupadaPeloT2 = false;
 bool Trem::intersecao4ocupadaPeloT3 = false;
 bool Trem::intersecao4ocupadaPeloT2 = false;
 bool Trem::intersecao6ocupadaPeloT4 = false;
 bool Trem::intersecao6ocupadaPeloT3 = false;
+bool Trem::intersecao3ocupadaPeloT2 = false;
+bool Trem::intersecao3ocupadaPeloT4 = false;
 
 //Construtor
 Trem::Trem(int ID, int x, int y){
@@ -61,6 +64,8 @@ void Trem::run(){
                 mutexIntersecao0.lock();
             } else if (intersecao4ocupadaPeloT3 && x == 630 && y <= 130 && y >= 110) {
                 mutexIntersecao4.lock();
+            } else if (intersecao3ocupadaPeloT4 && y == 150 && x >= 520 && x <= 540) {
+                mutexIntersecao3.lock();
             }
 
             if (x >= 360 && x <= 370 && y > 30) {
@@ -71,13 +76,19 @@ void Trem::run(){
                 if (!intersecao4ocupadaPeloT3) {
                     intersecao4ocupadaPeloT2 = true;
                 }
+            } else if (x <= 480 && x >= 360 && y == 150) {
+                if (!intersecao3ocupadaPeloT4) {
+                    intersecao3ocupadaPeloT2 = true;
+                }
             }
 
             if (y == 150 && x < 500) {
                 mutexIntersecao4.unlock();
                 intersecao4ocupadaPeloT2 = false;
+            } else if (y >= 130 && x == 360) {
+                mutexIntersecao3.unlock();
+                intersecao3ocupadaPeloT2 = false;
             }
-
 
             if (y == 30 && x <630) {
                 intersecao0ocupadaPeloT2 = false;
@@ -140,17 +151,26 @@ void Trem::run(){
         case 4: //Trem 4
             if (intersecao6ocupadaPeloT3 && x <= 480 && x >= 460 && y == 150) {
                 mutexIntersecao6.lock();
+            } else if ((intersecao3ocupadaPeloT2 || intersecao4ocupadaPeloT2) && x <= 340 && x >= 320 && y == 150) {
+                mutexIntersecao3.lock();
             }
 
             if (x <= 500 && x >= 470 && y == 150) {
                 if (!intersecao6ocupadaPeloT3) {
                     intersecao6ocupadaPeloT4 =  true;
                 }
+            } else if (x >= 360 && x <= 500 && y == 150) {
+                if (!intersecao3ocupadaPeloT2) {
+                    intersecao3ocupadaPeloT4 = true;
+                }
             }
 
             if (x <= 480 && y == 270) {
                 mutexIntersecao6.unlock();
                 intersecao6ocupadaPeloT4 = false;
+            } else if (x == 500 && y >= 170 && y <= 190) {
+                mutexIntersecao3.unlock();
+                intersecao3ocupadaPeloT4 = false;
             }
 
             if (x >= 250 && x < 500 && y == 150) {
